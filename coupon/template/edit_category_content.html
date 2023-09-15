@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+<head>
+	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   		 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+  		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+  		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+  <script src="https://kit.fontawesome.com/a574cc94fd.js" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+<title>Edit Category Content</title>
+</head>
+<body>
+	<div id="box4" class="container hidden-div">
+					<h5 class="mt-2">Edit Category Content</h5>
+					{%for i in data%}
+					<form method="Post"  class="border p-2 mt-4">{%csrf_token%}
+						
+						
+						<span class="d-flex justify-content-between mt-4">
+							<label class="p-1">Merchant</label>
+							<input type="text" class="form-control w-75 p-1" name="ncc_merchant" value="{{i.merchant}}">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Merchant Article Url</label>
+							<input type="text" class="form-control w-75 p-1 " name="ncc_merchantarticle" value="{{i.merchantArticleUrl}}">
+						</span>
+
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Categories</label>
+							<input type="text" class="form-control w-75 p-1" name="ncc_categories" value="{{i.categoriesCurrent}}">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Categories(Add)</label>
+							<input type="text" class="form-control w-75 p-1" name="ncc_categoriesadd" value="{{i.categoriesAdd}}">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Status</label>
+							<select class="form-select w-75 p-1" name="ncc_status">
+								<option value="Activate">Activate</option>
+								<option value="Deactivate">Deactivate</option>
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Offer Title</label>
+							<input type="text" class="form-control w-75 p-1" name="ncc_offertitle" value="{{i.offerTitle}}">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Page Meta Description</label>
+							<input type="text" class="form-control w-75 p-1" name="ncc_pagedesc" value="{{i.pageMetaDesc}}">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Content</label>
+							<input type="text" class="form-control w-75 p-1" name="ncc_content" value="{{i.content}}">
+						</span>
+						
+						<span class="mt-4">
+							<input type="submit" value="submit" name="" class="btn btn-dark form-control">
+						</span>
+					</form>
+					{%endfor%}
+				</div>
+</body>
+</html>

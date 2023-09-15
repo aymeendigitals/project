@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+<head>
+	 <meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   		 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+  		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+  		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+  <script src="https://kit.fontawesome.com/a574cc94fd.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <title>Dashboard</title>
+</head>
+<style type="text/css">
+	 .hidden-div {
+            display: none;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .box-button
+        {
+            padding: 10px;
+            border:none;
+            width: 100%;
+        }
+
+
+ul li a
+{
+	text-decoration: none;
+	padding: 10px;
+	justify-content: center;
+	text-align: center;
+}
+</style>
+<body>
+<div class="container bg-dark">
+	<div class="d-flex justify-content-end">
+		<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="fa-regular fa-user"></i>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-screwdriver-wrench">    Action</i></a></li>
+    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user">  User Profile</i></a></li>
+    <li><a class="dropdown-item" href="/logout/"><i class="fa-solid fa-right-from-bracket">    Logout</i></a></li>
+  </ul>
+</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		
+			<div class="col-3">
+				<div class="mt-5">
+					<div class="accordion accordion-flush border" id="accordionFlushExample">
+  <div class="accordion-item m-2  p-2">
+    <h5><i class="fa-solid fa-gauge-high"></i><button class="box-button" data-box="box0">Dashboard</button></h5>
+   
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+        <i class="fa-solid fa-folder-tree"></i> &nbsp;Category
+      </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+      	<ul class="list-group">
+        <li class="list-group-item"><button class="box-button" data-box="box1">Category</button></li>
+        <li class="list-group-item"><button class="box-button" data-box="box2">Add Category</button></li>
+        <li class="list-group-item"><button class="box-button" data-box="box3">Category Content</button></li>
+        <li class="list-group-item"><button class="box-button" data-box="box4">Add Category Content</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+        <i class="fa-solid fa-gears"></i> &nbsp;Offer Management
+      </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+      	<ul class="list-group">
+        <li class="list-group-item"><button class="box-button" data-box="box5">Offer</button> </li>
+        <li class="list-group-item"><button class="box-button" data-box="box6">Add Offer</button></li>
+        <li class="list-group-item"><button class="box-button" data-box="box7">Submit Coupon</button> </li>
+        <li class="list-group-item"><button class="box-button" data-box="box8">Merchant Expiry Offers</button> </li>
+        <li class="list-group-item"><button class="box-button" data-box="box9">Feed Offer Queue</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+				</div>
+			</div>
+
+			<div class="col-9">
+				<!--Dashboard-->
+				<div class="container mt-5 hidden-div" id="box0" >
+					<div class="row">
+						<div class="col-md-3">
+							<div class="bg-primary p-3 text-white shadow rounded">
+								<span class="d-flex justify-content-between">
+									<i class="fa-solid fa-square-plus"></i>
+									<h5>741</h5>
+								</span>
+								<span class="d-flex justify-content-end">Standard Offer Added</span>
+								
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="bg-danger p-3 text-white shadow rounded">
+								<span class="d-flex justify-content-between">
+									<i class="fa-solid fa-square-minus"></i>
+									<h5>741</h5>
+								</span>
+								<span class="d-flex justify-content-end">Expired standard Offer</span>
+								
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="bg-success p-3 text-white shadow rounded">
+								<span class="d-flex justify-content-between">
+									<i class="fa-solid fa-square-plus"></i>
+									<h5>741</h5>
+								</span>
+								<span class="d-flex justify-content-end">Product Offers Added</span>
+								
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="bg-warning p-3 text-white shadow rounded">
+								<span class="d-flex justify-content-between">
+								<i class="fa-solid fa-square-minus"></i>
+								<h5>741</h5>
+								</span>
+								<span class="float-right">Expired Product Offers</span>
+								
+							</div>
+						</div>
+					</div>
+
+					<canvas id="myChart"></canvas>
+				</div>
+				<!--show Category-->
+				<div id="box1" class="hidden-div">
+				<div class="container">
+					<h5 class="mt-2">Category</h5>
+					<div class="container border shadow p-3">
+						<p class="border p-2">Category Search</p>
+					<div class="d-flex justify-content-between p-3">
+
+						<div>
+							<label>Category Name</label>
+							<input type="text" name="" class="form-control">
+						</div>
+
+						<div>
+							<label>Status</label>
+							<select class="form-select">
+                <option>Activate</option>
+                <option>Deactivate</option>       
+              </select>
+						</div>
+
+						<div>
+							<label>Country</label>
+							<select class="form-select">
+                <option>India</option>
+                <option>America</option>
+                <option>China</option>
+                <option>Egypt</option>
+                <option>England</option>
+                <option>Russia</option>       
+              </select>
+						</div>
+					</div>
+					<input type="submit" class="btn btn-dark" name="">
+					<input type="reset" name="" class="btn btn-warning">
+				</div>
+				</div>
+
+				<div class="container">
+					<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      
+      <th scope="col">Category Path</th>
+      <th scope="col">Category Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  	{%for i in catobj%}
+    <tr>
+      <td>{{i.parentPath}}</td>
+      <td>{{i.categoryName}}</td>
+      <td>{{i.status}}</td>
+      <td><a href="{% url 'EditCategory' id=i.id%}" class="btn btn-primary">Edit</a></td>
+    </tr>
+    {%endfor%}
+    
+  </tbody>
+</table>
+
+				</div>
+
+      </div>
+      				<!--Add Category-->
+				<div id="box2" class="container hidden-div">
+					<h5 class="mt-2">New Category</h5>
+					<form method="Post" action="/addCategory/" enctype="multipart/form-data" class="border p-2 mt-4">
+						{%csrf_token%}
+						<p class="border p-2">Add/Edit Category</p>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="p-1">Category Name</label>
+							<input type="text" class="form-control w-75 p-1" name="ac_categoryname">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Translated Category Name</label>
+							<input type="text" class="form-control w-75 p-1 " name="ac_transcatname">
+						</span>
+
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Parent Path</label>
+							<input type="text" class="form-control w-75 p-1" name="ac_parentpath">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Status</label>
+							<select class="form-select w-75 p-1" name="ac_status">
+								<option value="Active">Active</option>
+								<option value="Deactive">Deactive</option>
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Description</label>
+							<input type="text" class="form-control w-75 p-1" name="ac_description">
+						</span>
+
+						
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Translated Description</label>
+							<input type="text" class="form-control w-75 p-1" name="ac_transdesc">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Country </label>
+							<select class="form-select w-75 p-1" name="ac_country">
+								<option value="Australia">Australia</option>
+								<option value="Egypt">Egypt</option>
+								<option value="India">India</option>
+								<option value="America">America</option>
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Page Title</label>
+							<input type="text" class="form-control w-75 p-1" name="ac_pagetitle">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Meta Description</label>
+							<input type="text" class="form-control w-75 p-1" name="ac_metadesc">
+						</span>
+
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Meta Key Word</label>
+							<input type="text" class="form-control w-75 p-1" name="ac_metakeyword">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">MPU Ad</label>
+							<input type="text" class="form-control w-75 p-1" name="ac_mpu">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">CSS Class</label>
+							<input type="text" class="form-control w-75 p-1" name="ac_cssclass">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Category Icon</label>
+							<input type="file" class="form-control w-75 p-1" name="ac_categoryicon">
+						</span>
+
+						<span class="mt-4">
+							<input type="submit" value="submit" name="" class="btn btn-dark form-control">
+						</span>
+					</form>
+					
+				</div>
+				<!--Show Category content-->
+				 <div id="box3" class="hidden-div">
+				<div class="container">
+					<h5 class="mt-2">Category Content</h5>
+					<div class="container border shadow p-3">
+						<p class="border p-2">Search</p>
+					<div class="d-flex justify-content-between p-3">
+
+						<div>
+							<label>Merchant</label>
+							<input type="text" name="" class="form-control">
+						</div>
+
+						<div>
+							<label>Category</label>
+							<input type="text" name="" class="form-control">
+						</div>
+
+						<div>
+							<label>Search</label>
+							<input type="text" name="" class="form-control">
+						</div>
+					</div>
+					<input type="submit" class="btn btn-dark" name="">
+					<input type="reset" name="" class="btn btn-warning">
+				</div>
+				</div>
+
+				<div class="container">
+					<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      
+      <th scope="col">Content Title</th>
+      <th scope="col">Merchant</th>
+      <th scope="col">Category</th>
+      <th scope="col">Date Added</th>
+      <th scope="col">Action</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  	{%for i in catcontentobj%}
+    <tr>
+      <td>{{i.offerTitle}}</td>
+      <td>{{i.merchant}}</td>
+      <td>{{i.categoriesCurrent}}</td>
+      <td>{{i.createdDate}}</td>
+      <td><a href="{% url 'editcategorycontent' id=i.id%}" class="btn btn-primary">Edit</a> <a href="" class="btn btn-success">Deactivate</a></td>
+    </tr>
+   {%endfor%}
+   
+   
+  </tbody>
+</table>
+
+				</div>
+      </div>
+
+				<!--Add category content-->
+				<div id="box4" class="container hidden-div">
+					<h5 class="mt-2">Add New Category Content</h5>
+					<form method="Post" action="/addNewCategoryContent/" class="border p-2 mt-4">{%csrf_token%}
+						<p class="border p-2">Add/Edit Category Content</p>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="p-1">Merchant</label>
+							<input type="text" class="form-control w-75 p-1" name="ncc_merchant">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Merchant Article Url</label>
+							<input type="text" class="form-control w-75 p-1 " name="ncc_merchantarticle">
+						</span>
+
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Categories</label>
+							<input type="text" class="form-control w-75 p-1" name="ncc_categories">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Categories(Add)</label>
+							<input type="text" class="form-control w-75 p-1" name="ncc_categoriesadd">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Status</label>
+							<select class="form-select w-75 p-1" name="ncc_status">
+								<option value="Activate">Activate</option>
+								<option value="Deactivate">Deactivate</option>
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Offer Title</label>
+							<input type="text" class="form-control w-75 p-1" name="ncc_offertitle">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Page Meta Description</label>
+							<input type="text" class="form-control w-75 p-1" name="ncc_pagedesc">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Content</label>
+							<input type="text" class="form-control w-75 p-1" name="ncc_content">
+						</span>
+
+						<span class="mt-4">
+							<input type="submit" value="submit" name="" class="btn btn-dark form-control">
+						</span>
+					</form>
+					
+				</div>
+                <!--show Offer-->
+                <div class="box7" class="container hidden-div">
+                	
+                </div>
+				<!--Add offer-->
+				<div id="box6" class="container hidden-div">
+					<h5 class="mt-2">Add New Offer</h5>
+					<form method="Post" action="/addOffer/" enctype="multipart/form-data" class="border p-2 mt-4">{%csrf_token%}
+						<p class="border p-2">Add/Edit Offer</p>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="p-1">Offer Reference</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_offerreference">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Offer Image</label>
+							<input type="file" class="form-control w-75 p-1 " name="ao_offerimage">
+						</span>
+
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Merchant</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_merchant">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Offer Type</label>
+							<select class="form-select w-75 p-1" name="ao_offertype">
+								<option value="offer 1">offer 1</option>
+								<option value="offer 2">offer 2</option>
+								<option value="offer 3">offer 3</option>
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Offer Sub Type</label>
+							<select class="form-select w-75 p-1" name="ao_offersubtype">
+								<option value="subtype 1">1</option>
+								<option value="subtype 2">1</option>
+								<option value="subtype 3">1</option>
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Voucher Code</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_vouchercode">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Category Current</label>
+							<input type="text" class="form-control  w-75 p-1" value="N/A" name="ao_categoriescurrent">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Categories</label>
+							<select class="form-select w-75 p-1" name="ao_categoriesadd">
+						{% for i in catobj %}
+						<option value="{{i.id}}">{{i.categoryName}}</option>
+						{% endfor %}
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Status</label>
+							<select class="form-select w-75 p-1" name="ao_status">
+								<option value="Active">Active</option>
+								<option value="Deactive">Deactive</option>
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Merchant Offer URL</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_merchantofferurl">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Offer Click URL</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_offerclickurl">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Offer Headline</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_offerheadline">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Offer Title</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_offertitle">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">IdealFeed Offer Title</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_idealfeedsoffertitle">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">RP Offer Title</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_rpoffertitle">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="" name="ao_discounttype">Discount Type</label>
+							<span>Percentage
+							<input type="radio" class="" style="accent-color:black" name="ao_discounttype" value="Percentage">
+							</span>
+
+							<span>Fixed Value
+							<input type="radio" class="" style="accent-color:black" name="ao_discounttype" value="Fixed Value">
+							 </span>
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Discount Value</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_discountvalue">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Description</label>
+							<textarea class="form-control w-75 p-1" rows="4" name="ao_description"></textarea>
+						</span>
+
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">IdealFeeds Description</label>
+							<textarea class="form-control w-75 p-1" rows="4" name="ao_idealfeedsdesc"></textarea>
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">RP Description</label>
+							<textarea class="form-control w-75 p-1" rows="4" name="ao_rpdesc"></textarea>
+						</span>
+
+						
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Terms & Condition</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_termcondition">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Min Cart Value</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_mincartvalue">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Brand Restriction</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_brandrestriction">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">User Restriction</label>
+							<select class="form-select w-75 p-1" name="ao_userrestriction">
+								<option value="N/A">N/A</option>>
+								<option value="1">1</option>
+								<option value="2">2</option>
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Start Date</label>
+							<input type="date" class="form-control w-75 p-1" name="ao_startdate">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">End Date</label>
+							<input type="date" class="form-control w-75 p-1" name="ao_enddate">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Display order No.</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_display" placeholder="Default">
+						</span>
+
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Sale Event</label>
+							<select class="form-select w-75 p-1" name="ao_saleevent">
+								<option value="Event">Event</option>
+								<option value="Event 2">Event1</option>
+								<option value="Event 3">Event2</option>
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Blaze Text</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_blazetext" placeholder="Default">
+						</span>
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Created By</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_createdby" placeholder="Default">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Owner Agency</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_owneragency" placeholder="Default">
+						</span>
+
+						<span class="mt-4">
+							<input type="submit" value="submit" name="" class="btn btn-dark form-control">
+						</span>
+					</form>
+					
+				</div>
+			</div>
+		</div>
+</div>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Label 1', 'Label 2', 'Label 3','label 4'],
+        datasets: [{
+            label: 'Data',
+            data: [10,7, 25, 7,20],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+            ],
+            borderWidth: 1,
+        }],
+    },
+});
+</script>
+
+<script>
+    const buttons = document.querySelectorAll('.box-button');
+    const divs = document.querySelectorAll('.hidden-div');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const divToShow = this.getAttribute('data-box');
+
+            divs.forEach(div => {
+                if (div.id === divToShow) {
+                    div.style.display = 'block';
+                    
+                } else {
+                    div.style.display = 'none';
+                    
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+</body>
+</html>

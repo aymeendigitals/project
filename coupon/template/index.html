@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+<head>
+		 <meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   		 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+  		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+  		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+  <script src="https://kit.fontawesome.com/a574cc94fd.js" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+
+ <style type="text/css">
+   .parallelx
+{
+background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.1)),url({% static 'shopping-girl.jpg' %});
+  width: 100%;
+  height:70vh;
+}
+ </style>
+</head>
+<body>
+{% block navbar %}
+<!---Navbar-->
+		<nav class="navbar navbar-expand-lg navbar-light bg-white p-3 shadow-sm fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse mt-2" id="navbarSupportedContent">
+     <div class="container">
+     	<div class="row mt-4 ">
+     		<div class="col-md-3 d-flex ">
+     		    <img src="{% static 'logo.webp' %}" width="50px;">
+     		    <h3>Egypt Voucher</h3>
+     		</div>
+     		<div class="col-md-6">	
+     			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        		<li class="custom_menu ">
+          		<a class=" active text-dark" aria-current="page" href="#">Home</a>
+        		</li>
+        		<li class="custom_menu">
+          		<a class="text-dark" href="/Brands/">All Brands</a>
+        		</li>
+        		<li class="custom_menu">
+          		<a class="text-dark" href="#">All Catoryeg</a>
+        		</li>
+            <li class="custom_menu">
+              <a class="text-dark" href="#" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+            </li>
+      			</ul></div>
+     		<div class="col-md-3 text-center">
+     			
+        <a href="#" style="text-decoration: none;" >
+        	<div class="d-flex justify-content-center ">
+        		<img src="{% static 'indianflaglog.jpg' %}" width="35px" height="35px" class="shadow-sm">
+        		<p class="m-1 text-dark">India</p>
+        	</div>
+        </a>
+     		</div>
+     	</div>
+     </div>
+     
+      
+    </div>
+  </div>
+</nav>
+
+{% endblock navbar %}
+
+
+<section class="parallelx">
+	
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col-12 d-flex  ">
+        <form method="Post" class="w-100" action="/search/">{%csrf_token%}
+          <div class="d-flex">
+					<input type="text" name="keyword" class="form-control">
+					<button class="btn btn-warning"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+        </form>
+				</div>
+			</div>
+		</div>
+	
+	
+</section>
+
+
+
+<div class="container-fluid bg-light">
+	<div class="row m-2">
+		<div class="col-md-8">
+			<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'slider 1.png' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+       
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'slider2.png' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+       
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'slider 1.png' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+       
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+		</div>
+		<div class="col-md-4">
+			<form class="bg-light shadow rounded p-4">
+				<h5 class="m-3">Get the best coupon codes to your inbox</h5>
+				<p class="m-3">Get the newest and best coupon codes and deals direct to you.</p>
+				<input type="text" name="" class="form-control m-2">
+				<input type="submit" name="" class="btn btn-success form-control m-2">
+				<p class="m-3">By signing up you agree to our privacy policy.</p>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="container-fluid p-3">
+	<h4 class="text-center">Featured Store</h4>
+	<div class="row">
+		<div class="col-md-6  text-center">
+			<img src="{% static 'norton.png' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+			<img src="{% static 'hm.png' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+			<img src="{% static 'skechers-logo.jpg' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+			<img src="{% static 'borzo.png' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+			<img src="{% static 'interflora-logo.jpg' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+		</div>
+		<div class="col-md-6 text-center ">
+			<img src="{% static 'the-face-shop.png' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+			<img src="{% static 'aldo.jpg' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+			<img src="{% static 'lottoland-logo.jpg' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+			<img src="{% static 'mac-cosmetics.png' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+			<img src="{% static 'apple-music.jpg' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid bg-light">
+	<div class="row rounded">
+
+		<div class="col-md-7">
+			<h4>Most Popular India Coupon Codes for August 2023 This Week's Featured Coupons in India</h4>
+
+      {%for i in offerobj%}
+			<div class="card">
+  			
+  			<div class="card-body">
+    			<div class="row">
+    			<div class="col-md-3"><img class="card-img-top" src="{{ i.offerImage.url }}" alt="Card image cap"></div>
+    				<div class="col-md-6"><h5>{{i.offerTitle}}</h5>
+    				<p>Use the code at checkout and get 8% off on all Activities, Attractions, Tours and Experiences at TripAdvisor.View more TripAdvisor deals</p>
+                <div><a href="{% url 'showpage' id=i.id%}" class="more-details" target="_blank">view more {{i.offerTitle}} deals.</a></div>
+    				</div>
+           
+    				<div class="col-md-3">
+                 <div class="">
+                  <span><a  onclick="window.location.href='{{i.offerClickUrl}}';" class="btn btn-success form-control">Get Offer&nbsp;<span class="offerpeel">xxxx</span></a></span>
+                 
+                </div>    
+            </div>
+    			</div>
+    		<div class="footer">
+         <div class="row">
+            <div class="col-md-6">
+              <p class="bg-light mt-2" style="font-size: 14px;font-weight: 500;">Expires on {{i.endDate}}</p>
+            </div>
+             <div class="col-md-6">
+               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" value="Terms">
+        <h6>Terms</h6>
+      </button>
+             </div>
+         </div>
+          
+          <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <p>{{i.termCondition}}</p>
+      </div>
+    </div>
+  </div>
+  
+ 
+</div>
+        </div>
+ 			</div>
+			</div>
+      {%endfor%}
+		</div>
+		<div class="col-md-5">
+      <h4>Browse latest offers by category</h4>
+    <div class="row border bg-white rounded">
+     {%for i in catobj%}
+      <div class="col-6">
+         <div  class="bg-light p-3 my-2 rounded"><img class="cat-icon" src="{{ i.categoryIcon.url }}" alt="Card image cap">  {{i.categoryName}}</div>
+      </div>
+    {%endfor%}
+    </div>  
+    </div>
+	</div>	
+</div>
+
+
+<section class="bg-light">
+	<div class="container my-5">
+    <h3 class="text-dark mt-5">How to use coupon codes</h3>
+    <div class="row mt-5">
+      <div class="col-md-4">
+        <div class="bg-white p-3 text-dark rounded">
+          <h6>1 Search for the best coupon</h6>
+          <p>Search for the store on Love Coupons India where you want to save money and look for the best coupons for you.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+          <div class="bg-white p-3 text-dark rounded">
+           <h6>2 Activate and copy the code</h6>
+          <p>Search for the store on Love Coupons India where you want to save money and look for the best coupons for you.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+          <div class="bg-white p-3 text-dark rounded">
+          <h6>3 Apply the discount</h6>
+          <p>Search for the store on Love Coupons India where you want to save money and look for the best coupons for you.</p>
+        </div>
+      </div>
+    </div> 
+  </div>
+</section>
+
+<div class="container-fluid p-3 mt-5">
+  <h4 class="text-center">Featured Store</h4>
+  <div class="row">
+    <div class="col-md-6  text-center">
+      <img src="{% static 'norton.png' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+      <img src="{% static 'hm.png' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+      <img src="{% static 'skechers-logo.jpg' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+      <img src="{% static 'borzo.png' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+      <img src="{% static 'interflora-logo.jpg' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+    </div>
+    <div class="col-md-6 text-center ">
+      <img src="{% static 'the-face-shop.png' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+      <img src="{% static 'aldo.jpg' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+      <img src="{% static 'lottoland-logo.jpg' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+      <img src="{% static 'mac-cosmetics.png' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+      <img src="{% static 'apple-music.jpg' %}" class="img thumbnails shadow rounded m-2" width="100px;">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+   <h4 class="">Popular Storese</h4>
+   <p>Make huge savings at your favorite stores.</p>
+  <div class="row mt-4">
+    <div class="  col-4">
+      <a href="" style="color: black; text-decoration: none;" class="p-3 mt-2">Norton Coupons</a>
+    </div>
+
+    <div class="col-4">
+      <a href="" style="color: black; text-decoration: none;" class="p-3  mt-2">Norton Coupons</a>
+    </div>
+
+     <div class="col-4">
+      <a href="" style="color: black; text-decoration: none;" class="p-3  mt-2">Norton Coupons</a>
+    </div>
+
+    <div class="col-4">
+      <a href="" style="color: black; text-decoration: none;" class="p-3  mt-2">Norton Coupons</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+<footer>
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <img src="{% static 'logo.webp' %}" width="50px;">
+      <h3 class="text-white">Love Coupon</h3>
+    </div>
+    <hr style="color: white; height: 2px;">
+    <div class="row">
+      <div class="col-md-6 text-center">
+       
+        <ul>
+          <li> <h6 class="text-center">Website Info</h6></li>
+          <li><a href="">About Us</a></li>
+          <li><a href="">All Brands</a></li>
+          <li><a href="">All Category </a></li>
+          <li><a href="">Submit a Coupon</a></li>
+          <li><a href="">Contact Us</a></li>
+          <li><a href="">Black Friday</a></li>
+          <li><a href="">Cyber Monday</a></li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-center">
+        
+        <ul>
+          <li> <h6 class="text-center">Legal Info</h6></li>
+          <li><a href="">Legal Info</a></li>
+          <li><a href="">Terms & Condition</a></li>
+          <li><a href="">Disclaimer</a></li>
+          <li><a href="">Cookie Policy</a></li>
+          <li><a href="">View all sites</a></li>
+          
+        </ul>
+
+      </div>
+    </div>
+     <hr style="color: white; height: 2px;">
+    <div class="text-center text-white">
+      <p>© 2023. Made in India with ❤️. Coupons.com is operated by Coupan group, a company registered in India.</p>
+    </div>
+    
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" name="" class="form-control" placeholder="Search Brands">
+      </div>
+      <div class="modal-footer">
+       
+        <button type="button" class="btn btn-warning">Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

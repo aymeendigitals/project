@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+<head>
+	 <meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   		 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+  		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+  		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+  <script src="https://kit.fontawesome.com/a574cc94fd.js" crossorigin="anonymous"></script>
+  <title>Dashboard</title>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		
+			<div class="col-3">
+				<div class="mt-5">
+					<div class="accordion accordion-flush border" id="accordionFlushExample">
+  <div class="accordion-item m-2  p-2">
+    <h5><i class="fa-solid fa-gauge-high"></i> Dashboard</h5>
+   
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+        <i class="fa-solid fa-folder-tree"></i> &nbsp;Category
+      </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+      	<ul class="list-group">
+        <li class="list-group-item">Category</li>
+        <li class="list-group-item">Add Category</li>
+        <li class="list-group-item">Category Content</li>
+        <li class="list-group-item">Add Category Content</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+        <i class="fa-solid fa-gears"></i> &nbsp;Offer Management
+      </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+      	<ul class="list-group">
+        <li class="list-group-item">Offer</li>
+        <li class="list-group-item">Add Offer</li>
+        <li class="list-group-item">Submit Coupon</li>
+        <li class="list-group-item">Merchant Expiry Offers</li>
+        <li class="list-group-item">Feed Offer Queue</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="col-9">
+	<div id="box6" class="container hidden-div">
+					<h5 class="mt-2">Add New Offer</h5>
+					<form method="Post" action="/addOffer/" enctype="multipart/form-data" class="border p-2 mt-4">{%csrf_token%}
+						<p class="border p-2">Add/Edit Offer</p>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="p-1">Offer Reference</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_offerreference">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Offer Image</label>
+							<input type="file" class="form-control w-75 p-1 " name="ao_offerimage">
+						</span>
+
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Merchant</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_merchant">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Offer Type</label>
+							<select class="form-select w-75 p-1" name="ao_offertype">
+								<option value="offer 1">offer 1</option>
+								<option value="offer 2">offer 2</option>
+								<option value="offer 3">offer 3</option>
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Offer Sub Type</label>
+							<select class="form-select w-75 p-1" name="ao_offersubtype">
+								<option value="subtype 1">1</option>
+								<option value="subtype 2">1</option>
+								<option value="subtype 3">1</option>
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Voucher Code</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_vouchercode">
+						</span>
+
+						<span class="d-flex justify-content-between mt-4">
+							<label class="">Category Current</label>
+							<input type="text" class="form-control  w-75 p-1" value="N/A" name="ao_categoriescurrent">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Categories</label>
+							<select class="form-select w-75 p-1" name="ao_categoriesadd">
+						{% for i in catobj %}
+						<option value="{{i.id}}">{{i.categoryName}}</option>
+						{% endfor %}
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Status</label>
+							<select class="form-select w-75 p-1" name="ao_status">
+								<option value="Active">Active</option>
+								<option value="Deactive">Deactive</option>
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Merchant Offer URL</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_merchantofferurl">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Offer Click URL</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_offerclickurl">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Offer Headline</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_offerheadline">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Offer Title</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_offertitle">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">IdealFeed Offer Title</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_idealfeedsoffertitle">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">RP Offer Title</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_rpoffertitle">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="" name="ao_discounttype">Discount Type</label>
+							<span>Percentage
+							<input type="radio" class="" style="accent-color:black" name="ao_discounttype" value="Percentage">
+							</span>
+
+							<span>Fixed Value
+							<input type="radio" class="" style="accent-color:black" name="ao_discounttype" value="Fixed Value">
+							 </span>
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Discount Value</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_discountvalue">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Description</label>
+							<textarea class="form-control w-75 p-1" rows="4" name="ao_description"></textarea>
+						</span>
+
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">IdealFeeds Description</label>
+							<textarea class="form-control w-75 p-1" rows="4" name="ao_idealfeedsdesc"></textarea>
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">RP Description</label>
+							<textarea class="form-control w-75 p-1" rows="4" name="ao_rpdesc"></textarea>
+						</span>
+
+						
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Terms & Condition</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_termcondition">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Min Cart Value</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_mincartvalue">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Brand Restriction</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_brandrestriction">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">User Restriction</label>
+							<select class="form-select w-75 p-1" name="ao_userrestriction">
+								<option value="N/A">N/A</option>>
+								<option value="1">1</option>
+								<option value="2">2</option>
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Start Date</label>
+							<input type="date" class="form-control w-75 p-1" name="ao_startdate">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">End Date</label>
+							<input type="date" class="form-control w-75 p-1" name="ao_enddate">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Display order No.</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_display" placeholder="Default">
+						</span>
+
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Sale Event</label>
+							<select class="form-select w-75 p-1" name="ao_saleevent">
+								<option value="Event">Event</option>
+								<option value="Event 2">Event1</option>
+								<option value="Event 3">Event2</option>
+							</select>
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Blaze Text</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_blazetext" placeholder="Default">
+						</span>
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Created By</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_createdby" placeholder="Default">
+						</span>
+
+						<span class="d-flex justify-content-between my-4">
+							<label class="">Owner Agency</label>
+							<input type="text" class="form-control w-75 p-1" name="ao_owneragency" placeholder="Default">
+						</span>
+
+						<span class="mt-4">
+							<input type="submit" value="submit" name="" class="btn btn-dark form-control">
+						</span>
+					</form>
+					
+				</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+</body>
+</html>
